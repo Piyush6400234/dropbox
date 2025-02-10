@@ -1,0 +1,22 @@
+services:
+  mysql:
+    image: mysql:8.0   # Change version as needed
+    container_name: mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - my_network
+
+volumes:
+  mysql_data:  # Persistent volume for MySQL data
+
+networks:
+  my_network:  # Custom network for communication with other services
